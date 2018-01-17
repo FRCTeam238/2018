@@ -4,16 +4,16 @@ import org.usfirst.frc.team238.core.AbstractCommand;
 import org.usfirst.frc.team238.core.Logger;
 import org.usfirst.frc.team238.robot.ControlBoard;
 import org.usfirst.frc.team238.robot.CrusaderCommon;
+import org.usfirst.frc.team238.robot.Drivetrain;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CommandTankDrive extends AbstractCommand {
 
-  RobotDrive myRobotDrive;
+  Drivetrain theDrivetrain;
 
-  public CommandTankDrive(RobotDrive robotDrive) {
-    this.myRobotDrive = robotDrive;
+  public CommandTankDrive(Drivetrain theDT) {
+	  this.theDrivetrain = theDT;
   }
 
   public void prepare() {
@@ -37,7 +37,7 @@ public class CommandTankDrive extends AbstractCommand {
     Logger.Log("Left Motor Value in TELEOP = " + leftJsValue);
     Logger.Log("Right Motor Value in TELEOP = " + rightJsValue);
     
-    myRobotDrive.tankDrive(leftJsValue, rightJsValue);
+    theDrivetrain.tankDrive(leftJsValue, rightJsValue);//
 
   }
 

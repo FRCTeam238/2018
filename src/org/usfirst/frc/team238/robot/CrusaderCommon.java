@@ -74,10 +74,10 @@ public class CrusaderCommon {
 	public final static int TALON_NO_VALUE = 0;
 	
 	/*THESE ARE THE ALL THE TALON IDS FOR THE 2018 ROBOT*/
-	public static final int DRIVE_TRAIN_MASTER_LEFT = 0;
-	public static final int DRIVE_TRAIN_MASTER_RIGHT = 1;
-	public static final int DRIVE_TRAIN_SLAVE_RIGHT = 2;
-	public static final int DRIVE_TRAIN_SLAVE_LEFT = 3;
+	public static final int DRIVE_TRAIN_MASTER_LEFT = 5;
+	public static final int DRIVE_TRAIN_MASTER_RIGHT = 8;
+	public static final int DRIVE_TRAIN_SLAVE_RIGHT = 7;
+	public static final int DRIVE_TRAIN_SLAVE_LEFT = 6;
 
 	
 	//Servo power setting

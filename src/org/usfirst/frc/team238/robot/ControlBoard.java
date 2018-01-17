@@ -154,6 +154,10 @@ public class ControlBoard {
 	public static Joystick getDriverLeftJs() {
 		return driverLeftJs;
 	}
+	
+	public static double getDriverLeftYAxis() {
+		return driverLeftJs.getY();
+	}
 
 	public static void setDriverLeftJs(Joystick driverLeftJs) {
 		ControlBoard.driverLeftJs = driverLeftJs;
@@ -162,6 +166,10 @@ public class ControlBoard {
 
 	public static Joystick getDriverRightJs() {
 		return driverRightJs;
+	}
+	
+	public static double getDriverRightYAxis() {
+		return driverLeftJs.getY();
 	}
 
 	public static void setDriverRightJs(Joystick driverRightJs) {

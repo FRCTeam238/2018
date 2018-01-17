@@ -7,7 +7,6 @@ import org.usfirst.frc.team238.robot.Drivetrain;
 import org.usfirst.frc.team238.robot.Navigation;
 import org.usfirst.frc.team238.robot.Robot;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import org.usfirst.frc.team238.robot.Vision;
 
 public class CommandController 
@@ -37,12 +36,12 @@ public class CommandController
 	 * @param myClimber
 	 * @param myRobot
 	 */
-	public void  init(RobotDrive myRobotDrive,Drivetrain driveTrain,
+	public void  init(Drivetrain driveTrain,
 	    Navigation myNavigation, Vision myVision,Robot myRobot)
 	{
 
 		setupOperatorCommands(myNavigation, driveTrain, myVision, myRobot);
-		setupDriverCommands(myRobotDrive, driveTrain, myNavigation,myVision);
+		setupDriverCommands(driveTrain, myNavigation,myVision);
 		setupAutonomousCommands(driveTrain, myNavigation, myVision, myRobot);
 		
 		//Doesn't get used
@@ -91,7 +90,7 @@ public class CommandController
 	 * @param myVision
 	 * @param myFuelHandler
 	 */
-	private void setupDriverCommands( RobotDrive myRobotDrive, Drivetrain driveTrain,
+	private void setupDriverCommands(Drivetrain driveTrain,
 	    Navigation myNavigation, Vision myVision)
 	{
 		theDriverCommandFactory = new DriverCommandFactory();
@@ -99,7 +98,7 @@ public class CommandController
 		
 		driverLeftCmdList = theDriverCommandFactory.createDriverLeftCommands(driveTrain,myNavigation,myVision);
 		driverRightCmdList = theDriverCommandFactory.createDriverRightCommands(driveTrain,myNavigation,myVision);
-		driverCmdList = theDriverCommandFactory.createDriverCommands(myRobotDrive);
+		driverCmdList = theDriverCommandFactory.createDriverCommands(driveTrain);
 	}
 	
 	//Never gets called

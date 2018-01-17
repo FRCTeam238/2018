@@ -14,7 +14,7 @@ import org.usfirst.frc.team238.robot.Vision;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 	Preferences myPreferences;
 	ControlBoard myControlBoard;
 	CommandController theMCP;
-	RobotDrive myRobotDrive;
+	DifferentialDrive myRobotDrive;
 	Navigation myNavigation;
 	Drivetrain myDriveTrain;
 	DriverStation myDriverstation;
@@ -294,13 +294,13 @@ public class Robot extends IterativeRobot {
 			rightRearDrive.set(ControlMode.PercentOutput, CrusaderCommon.DRIVE_TRAIN_MASTER_RIGHT);
 			leftRearDrive.set(ControlMode.PercentOutput, CrusaderCommon.DRIVE_TRAIN_MASTER_LEFT);
 			
-			/*myRobotDrive = new RobotDrive(leftFrontDrive,rightFrontDrive);
+			/*myRobotDrive = new DifferentialDrive(leftFrontDrive,rightFrontDrive);
 			myRobotDrive.setSafetyEnabled(false);*/
 			
 			myNavigation = new Navigation();
 			myNavigation.init();
 			
-			myDriveTrain = new Drivetrain(myRobotDrive);
+			myDriveTrain = new Drivetrain(myControlBoard);
 			myDriveTrain.init(leftFrontDrive, rightFrontDrive);
 			
 			leftFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,0);
@@ -318,7 +318,7 @@ public class Robot extends IterativeRobot {
 			
 			//Controller object for telop
 			theMCP = new CommandController();
-			theMCP.init(myRobotDrive, myDriveTrain, myNavigation, theVision, myRobot);
+			theMCP.init(myDriveTrain, myNavigation, theVision, myRobot);
 			
 			//The handler that handles everything JSON related 
 			myAutonomousDataHandler = new AutonomousDataHandler();

@@ -2,19 +2,24 @@ package org.usfirst.frc.team238.robot;
 
 
 import org.usfirst.frc.team238.core.Logger;
+import org.usfirst.frc.team238.robot.ControlBoard;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.Joystick;
+
+/*import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;*/
 
 public class Drivetrain {
 
 	Solenoid shifterSolenoid;
-	RobotDrive robotMotors;
+	DifferentialDrive robotMotors;
+	
+	ControlBoard theControlBoard;
 	
 	TalonSRX leftFrontDrive;
 	TalonSRX rightFrontDrive;
@@ -37,9 +42,9 @@ public class Drivetrain {
 	
 	
 	
-	public Drivetrain(RobotDrive theRobotDrive)
+	public Drivetrain(ControlBoard theControls)
 	{
-		this.robotMotors = theRobotDrive;
+		this.theControlBoard = theControls;
 	}
 	
 	
@@ -107,6 +112,15 @@ public class Drivetrain {
 
 		
 		return encoderRight;
+	}
+	//
+	
+	public void tankDrive(double leftVal, double rightVal)
+	{
+		
+		leftFrontDrive.set(ControlMode.PercentOutput, -leftVal);
+		rightFrontDrive.set(ControlMode.PercentOutput, rightVal);
+		
 	}
 	
 	

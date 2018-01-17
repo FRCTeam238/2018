@@ -97,10 +97,10 @@ public class DriverCommandFactory
 	 * @param myRobotDrive
 	 * @return
 	 */
-	public HashMap<Integer, Command> createDriverCommands(RobotDrive myRobotDrive)
+	public HashMap<Integer, Command> createDriverCommands(Drivetrain theDT)
 	{
 		
-	 	CommandTankDrive cmdToDriveTheRobot = new CommandTankDrive(myRobotDrive);
+	 	CommandTankDrive cmdToDriveTheRobot = new CommandTankDrive(theDT);
 		
 		driverCommands.put(0, cmdToDriveTheRobot);
 		
